@@ -9,6 +9,7 @@ import {
   changeOperation,
   clearDisplay,
   addToMemory,
+  retrieveMemory,
 } from "./actions";
 
 function App() {
@@ -54,7 +55,7 @@ function App() {
               />
               <CalcButton
                 value={"MR"}
-                onClick={() => dispatch({ type: "RETRIEVE_MEMORY" })}
+                onClick={() => dispatch(retrieveMemory())}
               />
               <CalcButton
                 value={"MC"}
