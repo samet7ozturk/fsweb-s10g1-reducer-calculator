@@ -3,13 +3,17 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import reducer, { initialState } from "./reducers/index";
-import { addOne } from "./actions";
+import { addOne, applyNumber } from "./actions";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const handleAddOne = () => {
     dispatch(addOne());
+  };
+
+  const handleApplyNumber = (number) => {
+    dispatch(applyNumber(number));
   };
 
   return (
@@ -47,45 +51,21 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton value={1} onClick={handleAddOne} />
-              <CalcButton
-                value={2}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 2 })}
-              />
-              <CalcButton
-                value={3}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 3 })}
-              />
+              <CalcButton value={1} onClick={() => handleApplyNumber(1)} />
+              <CalcButton value={2} onClick={() => handleApplyNumber(2)} />
+              <CalcButton value={3} onClick={() => handleApplyNumber(3)} />
             </div>
 
             <div className="row">
-              <CalcButton
-                value={4}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 4 })}
-              />
-              <CalcButton
-                value={5}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 5 })}
-              />
-              <CalcButton
-                value={6}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 6 })}
-              />
+              <CalcButton value={4} onClick={() => handleApplyNumber(4)} />
+              <CalcButton value={5} onClick={() => handleApplyNumber(5)} />
+              <CalcButton value={6} onClick={() => handleApplyNumber(6)} />
             </div>
 
             <div className="row">
-              <CalcButton
-                value={7}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 7 })}
-              />
-              <CalcButton
-                value={8}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 8 })}
-              />
-              <CalcButton
-                value={9}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 9 })}
-              />
+              <CalcButton value={7} onClick={() => handleApplyNumber(7)} />
+              <CalcButton value={8} onClick={() => handleApplyNumber(8)} />
+              <CalcButton value={9} onClick={() => handleApplyNumber(9)} />
             </div>
 
             <div className="row">
