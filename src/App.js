@@ -3,17 +3,20 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import reducer, { initialState } from "./reducers/index";
-import { addOne, applyNumber } from "./actions";
+import { addOne, applyNumber, changeOperation } from "./actions";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const handleAddOne = () => {
-    dispatch(addOne());
-  };
+  // const handleAddOne = () => {
+  //   dispatch(addOne());
+  // };
 
   const handleApplyNumber = (number) => {
     dispatch(applyNumber(number));
+  };
+  const handleOperationChange = (operator) => {
+    dispatch(changeOperation(operator));
   };
 
   return (
@@ -71,21 +74,15 @@ function App() {
             <div className="row">
               <CalcButton
                 value={"+"}
-                onClick={() =>
-                  dispatch({ type: "SET_OPERATION", payload: "+" })
-                }
+                onClick={() => handleOperationChange("+")}
               />
               <CalcButton
                 value={"*"}
-                onClick={() =>
-                  dispatch({ type: "SET_OPERATION", payload: "*" })
-                }
+                onClick={() => handleOperationChange("*")}
               />
               <CalcButton
                 value={"-"}
-                onClick={() =>
-                  dispatch({ type: "SET_OPERATION", payload: "-" })
-                }
+                onClick={() => handleOperationChange("-")}
               />
             </div>
 
