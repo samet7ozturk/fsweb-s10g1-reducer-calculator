@@ -3,9 +3,14 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import reducer, { initialState } from "./reducers/index";
+import { addOne } from "./actions";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleAddOne = () => {
+    dispatch(addOne());
+  };
 
   return (
     <div className="App">
@@ -19,10 +24,10 @@ function App() {
             <TotalDisplay value={state.total} />
             <div className="row details">
               <span id="operation">
-                <b>Operation:</b> X
+                <b>Operation:</b> {state.operation}
               </span>
               <span id="memory">
-                <b>Memory:</b> 0
+                <b>Memory:</b> {state.memory}
               </span>
             </div>
 
@@ -42,10 +47,7 @@ function App() {
             </div>
 
             <div className="row">
-              <CalcButton
-                value={1}
-                onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 1 })}
-              />
+              <CalcButton value={1} onClick={handleAddOne} />
               <CalcButton
                 value={2}
                 onClick={() => dispatch({ type: "INPUT_NUMBER", payload: 2 })}
