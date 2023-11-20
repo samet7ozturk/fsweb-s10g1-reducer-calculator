@@ -3,7 +3,13 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import reducer, { initialState } from "./reducers/index";
-import { addOne, applyNumber, changeOperation, clearDisplay } from "./actions";
+import {
+  addOne,
+  applyNumber,
+  changeOperation,
+  clearDisplay,
+  addToMemory,
+} from "./actions";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -44,7 +50,7 @@ function App() {
             <div className="row">
               <CalcButton
                 value={"M+"}
-                onClick={() => dispatch({ type: "ADD_TO_MEMORY" })}
+                onClick={() => dispatch(addToMemory())}
               />
               <CalcButton
                 value={"MR"}
