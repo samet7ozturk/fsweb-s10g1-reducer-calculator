@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 import TotalDisplay from "./components/TotalDisplay";
 import CalcButton from "./components/CalcButton";
 import reducer, { initialState } from "./reducers/index";
-import { addOne, applyNumber, changeOperation } from "./actions";
+import { addOne, applyNumber, changeOperation, clearDisplay } from "./actions";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
@@ -17,6 +17,9 @@ function App() {
   };
   const handleOperationChange = (operator) => {
     dispatch(changeOperation(operator));
+  };
+  const handleClearDisplay = () => {
+    dispatch(clearDisplay());
   };
 
   return (
@@ -87,10 +90,7 @@ function App() {
             </div>
 
             <div className="row ce_button">
-              <CalcButton
-                value={"CE"}
-                onClick={() => dispatch({ type: "CLEAR_ALL" })}
-              />
+              <CalcButton value={"CE"} onClick={handleClearDisplay} />
             </div>
           </form>
         </div>
